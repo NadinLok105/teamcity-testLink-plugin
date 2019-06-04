@@ -1,3 +1,4 @@
+<%@ page import="ru.nadin.tests.plugin.testLink.RunType" %>
 <%@ taglib prefix="props" tagdir="/WEB-INF/tags/props" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="propertiesBean" scope="request" type="jetbrains.buildServer.controllers.BasePropertiesBean"/>
@@ -5,9 +6,9 @@
 <div class="parameter">
         Run type: <strong>
         <% if (propertiesBean.getProperties().get("testLinkPlugin.request.runType")!=null) {%>
-            <%= ru.vetrf.tests.plugin.testLink.RunType.valueOf(propertiesBean.getProperties().get("testLinkPlugin.request.runType")).getName() %>
+            <%= RunType.valueOf(propertiesBean.getProperties().get("testLinkPlugin.request.runType")).getName() %>
         <%}else{%>
-            <%= ru.vetrf.tests.plugin.testLink.RunType.REPORT_RESULTS.getName() %>
+            <%= RunType.REPORT_RESULTS.getName() %>
         <%} %>
         </strong>
 </div>
