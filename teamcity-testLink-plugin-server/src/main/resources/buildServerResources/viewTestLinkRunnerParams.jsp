@@ -12,7 +12,11 @@
         <%} %>
         </strong>
 </div>
-
+<% if (propertiesBean.getProperties().get("testLinkPlugin.request.buildName")!=null) {%>
+            <div class="parameter">
+                    Build name: <strong><props:displayValue name="testLinkPlugin.request.buildName"/></strong>
+                </div>
+        <%} %>
 <% if (propertiesBean.getProperties().get("testLinkPlugin.request.projectName")!=null) {%>
             <div class="parameter">
                     Project name: <strong><props:displayValue name="testLinkPlugin.request.projectName"/></strong>

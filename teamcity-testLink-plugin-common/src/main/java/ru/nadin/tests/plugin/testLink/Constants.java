@@ -18,4 +18,5 @@ public interface Constants {
    String BUILD_STEP_PARAMETER_TEST_PLAN = "testLinkPlugin.request.testPlanName";
    String BUILD_STEP_PARAMETER_PLATFORM = "testLinkPlugin.request.platformName";
    String BUILD_STEP_PARAMETER_RUNTYPE = "testLinkPlugin.request.runType";
+   String BUILD_STEP_PARAMETER_BUILDNAME = "testLinkPlugin.request.buildName";
 }

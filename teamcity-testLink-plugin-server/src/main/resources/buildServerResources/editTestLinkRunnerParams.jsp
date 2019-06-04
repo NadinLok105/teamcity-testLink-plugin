@@ -14,6 +14,12 @@
     </tr>
 <%--Advanced options start --%>
 <tr class="advancedSetting advanced_hidden">
+    <th><label>Build name:</label></th>
+    <td>
+        <props:textProperty name="testLinkPlugin.request.buildName"/>
+    </td>
+</tr>
+<tr class="advancedSetting advanced_hidden">
     <th><label>Project name:</label></th>
     <td>
         <props:textProperty name="testLinkPlugin.request.projectName"/>
