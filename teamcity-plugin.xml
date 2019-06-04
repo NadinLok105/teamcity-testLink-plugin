@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<teamcity-plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:noNamespaceSchemaLocation="urn:shemas-jetbrains-com:teamcity-plugin-v1-xml">
+  <info>
+    <name>teamcity-testLink-plugin</name>
+    <display-name>teamcity-testLink-plugin</display-name>
+    <version>@Version@</version>
+    <description>TeamCity plugin for TestLink</description>
+    <download-url>https://github.com/NadinLok105/teamcity-testLink-plugin</download-url>
+    <email>NadinLok105@mail.ru</email>
+    <vendor>
+      <name>NadinLok105</name>
+      <url>https://github.com/NadinLok105</url>
+      <logo>-</logo>
+    </vendor>
+  </info>
+  <deployment use-separate-classloader="true"/>
+</teamcity-plugin>

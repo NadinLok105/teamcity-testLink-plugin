@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>teamcity-testLink-plugin</artifactId>
+        <groupId>ru.nadin.tests</groupId>
+        <version>1.0</version>
+    </parent>
+    <artifactId>teamcity-testLink-plugin-server</artifactId>
+    <packaging>jar</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>ru.nadin.tests</groupId>
+            <artifactId>teamcity-testLink-plugin-common</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jetbrains.teamcity</groupId>
+            <artifactId>server-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jetbrains.teamcity</groupId>
+            <artifactId>server-web-api</artifactId>
+            <version>${teamcity-version}</version>
+            <type>war</type>
+            <scope>provided</scope>
+        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>org.jetbrains.teamcity</groupId>-->
+<!--            <artifactId>tests-support</artifactId>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>org.jetbrains.teamcity</groupId>
+            <artifactId>agent-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.intellij</groupId>
+            <artifactId>openapi</artifactId>
+        </dependency>
+    </dependencies>
+</project>

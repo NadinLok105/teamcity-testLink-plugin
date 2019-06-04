@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+       default-autowire="constructor">
+
+<!-- Server part   -->
+    <!-- Bean to store TestLink settings -->
+    <bean id="testLinkServerSettings" class="ru.nadin.tests.plugin.testLink.runner.AdminSettings" init-method="init"/>
+
+    <!-- Main runner-->
+    <bean id="TestLinkRunType" class="ru.nadin.tests.plugin.testLink.runner.TestLinkRunType" depends-on="testLinkServerSettings" />
+
+
+    <bean id="testLinkBuildStartContextProcessor" class="ru.nadin.tests.plugin.testLink.runner.TestLinkBuildStartContextProcessor" init-method="register"/>
+
+    <!-- Administration controllers -->
+    <bean id="userKeyControler" class="ru.nadin.tests.plugin.testLink.runner.TestLinkRunTypeController" init-method="register">
+        <property name="mainSettings" ref="testLinkServerSettings"/>
+    </bean>
+
+    <bean id="TestLinkAdminPage" class="ru.nadin.tests.plugin.testLink.runner.ConfPage" init-method="register">
+        <constructor-arg index="2" value="/adminPage.jsp" />
+        <property name="mainSettings" ref="testLinkServerSettings"/>
+    </bean>
+</beans>
