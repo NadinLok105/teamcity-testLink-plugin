@@ -24,11 +24,11 @@
         <%} %>
 <% if (propertiesBean.getProperties().get("testLinkPlugin.request.testPlanName")!=null) {%>
             <div class="parameter">
-                    Project name: <strong><props:displayValue name="testLinkPlugin.request.testPlanName"/></strong>
+                    Test plan name: <strong><props:displayValue name="testLinkPlugin.request.testPlanName"/></strong>
                 </div>
         <%} %>
 <% if (propertiesBean.getProperties().get("testLinkPlugin.request.platformName")!=null) {%>
             <div class="parameter">
-                    Project name: <strong><props:displayValue name="testLinkPlugin.request.platformName"/></strong>
+                    Platform name: <strong><props:displayValue name="testLinkPlugin.request.platformName"/></strong>
                 </div>
         <%} %>
