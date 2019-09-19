@@ -21,6 +21,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class TeamCityClient {
    private AgentRunningBuild agentRunningBuild;
@@ -39,16 +40,31 @@ public class TeamCityClient {
 
    public TestOccurrences getTestsResults() {
       long buildId = agentRunningBuild.getBuildId();
-      HttpUriRequest request = new HttpGet(mainUrl + Constants.TEAMCITY_REST_API_TESTOCCURANCES + "(id:" + buildId + ")");
-      TestOccurrences allTests = null;
-      try {
-         HttpResponse response = client.execute(request);
-         allTests = trasnformResponse(response.getEntity());
-      } catch (Exception e) {
-         logger.internalError(e.getMessage(), e.getClass().getCanonicalName(), e);
-         logger.error(e.getStackTrace().toString());
+      String url = mainUrl + Constants.TEAMCITY_REST_API_TESTOCCURANCES + "(id:" + buildId + ")";
+      TestOccurrences allTests = new TestOccurrences();
+      TestOccurrences pageOfTests = getPageOfTestResults(url);
+      if (pageOfTests != null)
+         allTests.setTestOccurrences(pageOfTests.getTestOccurrences());
+      while (pageOfTests != null && StringUtils.isNotEmpty(pageOfTests.getNextHref())) {
+         pageOfTests = getPageOfTestResults(mainUrl + pageOfTests.getNextHref());
+         if (pageOfTests != null)
+            allTests.getTestOccurrences().addAll(pageOfTests.getTestOccurrences());
       }
       return allTests;
+   }
+
+   private TestOccurrences getPageOfTestResults(String url) {
+      HttpUriRequest request = new HttpGet(url);
+      TestOccurrences tests = null;
+      try {
+         HttpResponse response = client.execute(request);
+         tests = trasnformResponse(response.getEntity());
+         logger.message("TeamCity Rest Api call. Recieved tests results = " + tests.getTestOccurrences().size());
+      } catch (Exception e) {
+         logger.error("Exception during request TeamCity REST Api");
+         logger.exception(e);
+      }
+      return tests;
    }
 
    private TestOccurrences trasnformResponse(HttpEntity entity) throws IOException, JAXBException {
