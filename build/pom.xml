@@ -5,7 +5,7 @@
     <parent>
         <artifactId>teamcity-testLink-plugin</artifactId>
         <groupId>ru.nadin.tests</groupId>
-        <version>1.0</version>
+        <version>1.1</version>
     </parent>
     <artifactId>build</artifactId>
     <packaging>pom</packaging>
